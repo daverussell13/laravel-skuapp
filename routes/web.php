@@ -15,6 +15,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get("/login", [AuthController::class, "loginPage"]);
-Route::post('/login', [AuthController::class, "login"]);
-Route::get("/", [AppController::class, "dashboardPage"]);
+Route::group(
+    ["middleware" => ["auth"]],
+    function() {
+        Route::get("/", [AppController::class, "dashboardPage"]);
+        Route::get("/logout", [AuthController::class, "logout"]);
+    }
+);
+
+Route::group(
+    ["middleware" => ["guest"]],
+    function() {
+        Route::get("/login", [AuthController::class, "loginPage"]);
+        Route::post('/login', [AuthController::class, "login"]);
+    }
+);
