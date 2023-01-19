@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\FrozenFoodController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,6 +21,7 @@ Route::group(
     function() {
         Route::get("/", [AppController::class, "dashboardPage"]);
         Route::get("/logout", [AuthController::class, "logout"]);
+        Route::get("/table", [FrozenFoodController::class, "table"]);
     }
 );
 
