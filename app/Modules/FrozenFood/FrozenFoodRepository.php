@@ -54,7 +54,17 @@ class FrozenFoodRepository
                 $id
             ]);
         return $status;
+    }
 
+    public function softDeleteById(int $id)
+    {
+        $status = DB::update("UPDATE $this->tableName
+            SET deleted_at = ? WHERE food_id = ?",
+            [
+                Carbon::now()->toDateTimeString(),
+                $id
+            ]);
+        return $status;
     }
 }
 

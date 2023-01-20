@@ -27,6 +27,7 @@ Route::group(
         Route::post("/food/create", [FrozenFoodController::class, "add"]);
         Route::get("/food/update/{id}", [FrozenFoodController::class, "updateFormInput"]);
         Route::put("/food/update/{id}", [FrozenFoodController::class, "update"]);
+        Route::get("/food/delete/{id}", [FrozenFoodController::class, "delete"]);
     }
 );
 

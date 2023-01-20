@@ -53,5 +53,11 @@ class FrozenFoodService
         $success = $this->repository->update($input, $id);
         if (!$success) throw new Exception("Failed to update data");
     }
+
+    public function softDelete(int $id)
+    {
+        $success = $this->repository->softDeleteById($id);
+        if (!$success) throw new Exception("Failed to delete data");
+    }
 }
 

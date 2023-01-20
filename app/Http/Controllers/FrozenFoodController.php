@@ -61,4 +61,14 @@ class FrozenFoodController extends Controller
             return redirect()->back()->with("error", $err->getMessage());
         }
     }
+
+    public function delete($id)
+    {
+        try {
+            $this->service->softDelete($id);
+            return redirect()->back()->with("success", "Data successfully deleted");
+        } catch (Exception $err) {
+            return redirect()->back()->with("error", $err->getMessage());
+        }
+    }
 }
