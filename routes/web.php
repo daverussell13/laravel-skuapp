@@ -22,13 +22,14 @@ Route::group(
         Route::get("/", [AppController::class, "dashboardPage"]);
         Route::get("/logout", [AuthController::class, "logout"]);
         Route::get("/table", [FrozenFoodController::class, "table"]);
+        Route::get("/foods", [FrozenFoodController::class, "getFroozenFood"])->name("getfood");
     }
 );
 
 Route::group(
     ["middleware" => ["guest"]],
     function() {
-        Route::get("/login", [AuthController::class, "loginPage"]);
+        Route::get("/login", [AuthController::class, "loginPage"])->name("login");
         Route::post('/login', [AuthController::class, "login"]);
     }
 );
