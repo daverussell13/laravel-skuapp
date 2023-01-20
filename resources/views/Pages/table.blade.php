@@ -46,8 +46,10 @@
                                                     <td>{{ $food->description }}</td>
                                                     <td>
                                                         <div class="d-flex">
-                                                            <a href="#" class="btn btn-info mr-2">Update</a>
-                                                            <a href="#" class="btn btn-danger">Delete</a>
+                                                            <a href="/food/update/{{ $food->food_id }}"
+                                                                class="btn btn-info mr-2">Update</a>
+                                                            <a href="/food/delete/{{ $food->food_id }}"
+                                                                class="btn btn-danger">Delete</a>
                                                         </div>
                                                     </td>
                                                 </tr>

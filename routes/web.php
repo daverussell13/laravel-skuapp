@@ -3,6 +3,7 @@
 use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrozenFoodController;
+use App\Modules\FrozenFood\FrozenFoodService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,6 +25,8 @@ Route::group(
         Route::get("/food/table", [FrozenFoodController::class, "table"]);
         Route::get("/food/create", [FrozenFoodController::class, "addFormInput"]);
         Route::post("/food/create", [FrozenFoodController::class, "add"]);
+        Route::get("/food/update/{id}", [FrozenFoodController::class, "updateFormInput"]);
+        Route::put("/food/update/{id}", [FrozenFoodController::class, "update"]);
     }
 );
 

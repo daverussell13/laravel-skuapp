@@ -2,6 +2,7 @@
 
 namespace App\Modules\FrozenFood;
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
 class FrozenFoodRepository
@@ -10,7 +11,13 @@ class FrozenFoodRepository
 
     public function selectAllFrozenFood()
     {
-        $result = DB::select("SELECT * FROM $this->tableName");
+        $result = DB::select("SELECT * FROM $this->tableName WHERE deleted_at IS NULL");
+        return $result;
+    }
+
+    public function getById(int $id)
+    {
+        $result = DB::select("SELECT * FROM $this->tableName WHERE food_id = ? AND deleted_at IS NULL", [$id]);
         return $result;
     }
 
@@ -29,6 +36,25 @@ class FrozenFoodRepository
                 $input["description"]
             ]);
         return $status;
+    }
+
+    public function update(array $input, int $id)
+    {
+        $status = DB::update("UPDATE $this->tableName
+            SET food_name = ?, weight = ?, price = ?, stock = ?, expiration_date = ?, description = ?, updated_at = ?
+            WHERE food_id = ?",
+            [
+                $input["name"],
+                $input["weight"],
+                $input["price"],
+                $input["stock"],
+                $input["expiration_date"],
+                $input["description"],
+                Carbon::now()->toDateTimeString(),
+                $id
+            ]);
+        return $status;
+
     }
 }
 
