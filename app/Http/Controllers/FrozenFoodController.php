@@ -19,7 +19,12 @@ class FrozenFoodController extends Controller
     public function table(Request $request)
     {
         $foods = $this->service->getPaginatedData(5);
-        $foods->setPath('/table');
+        $foods->setPath('/food/table');
         return view('pages.table', compact('foods'));
+    }
+
+    public function addFormInput(Request $request)
+    {
+        return view("pages.add");
     }
 }

@@ -24,12 +24,13 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>Food Name</th>
+                                                <th>Name</th>
                                                 <th>Weight</th>
                                                 <th>Price</th>
                                                 <th>Stock</th>
-                                                <th>Expiration Date</th>
+                                                <th>Expiration</th>
                                                 <th>Description</th>
+                                                <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -43,12 +44,22 @@
                                                     <td>{{ $food->stock }}</td>
                                                     <td>{{ $food->expiration_date }}</td>
                                                     <td>{{ $food->description }}</td>
+                                                    <td>
+                                                        <div class="d-flex">
+                                                            <a href="#" class="btn btn-info mr-2">Update</a>
+                                                            <a href="#" class="btn btn-danger">Delete</a>
+                                                        </div>
+                                                    </td>
                                                 </tr>
                                             @endforeach
-                                            {{ $foods->links('pagination::bootstrap-4') }}
                                         </tbody>
                                     </table>
                                 </div>
+                            </div>
+                            <div class="card-footer text-right">
+                                <nav class="d-inline-block">
+                                    {{ $foods->links('pagination::bootstrap-4') }}
+                                </nav>
                             </div>
                         </div>
                     </div>

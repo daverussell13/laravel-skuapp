@@ -21,8 +21,8 @@ Route::group(
     function() {
         Route::get("/", [AppController::class, "dashboardPage"]);
         Route::get("/logout", [AuthController::class, "logout"]);
-        Route::get("/table", [FrozenFoodController::class, "table"]);
-        Route::get("/foods", [FrozenFoodController::class, "getFroozenFood"])->name("getfood");
+        Route::get("/food/table", [FrozenFoodController::class, "table"]);
+        Route::get("/food/create", [FrozenFoodController::class, "addFormInput"]);
     }
 );
 

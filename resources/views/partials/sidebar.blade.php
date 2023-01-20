@@ -12,7 +12,10 @@
                         class="fas fa-fire"></i>
                     <span>Dashboard</span></a></li>
             <li class="menu-header">Menu</li>
-            <li class="{{ request()->is('table') ? 'active' : '' }}"><a class="nav-link" href="/table"><i
+            <li class="{{ request()->is('food/create') }}"><a class="nav-link" href="/food/create"><i
+                        class="fas fa-plus"></i>
+                    <span>Add</span></a></li>
+            <li class="{{ request()->is('food/table') ? 'active' : '' }}"><a class="nav-link" href="/food/table"><i
                         class="fas fa-columns"></i>
                     <span>Table</span></a></li>
             <li class=""><a class="nav-link" href="blank.html"><i class="far fa-square"></i>
