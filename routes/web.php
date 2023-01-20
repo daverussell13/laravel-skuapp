@@ -23,6 +23,7 @@ Route::group(
         Route::get("/logout", [AuthController::class, "logout"]);
         Route::get("/food/table", [FrozenFoodController::class, "table"]);
         Route::get("/food/create", [FrozenFoodController::class, "addFormInput"]);
+        Route::post("/food/create", [FrozenFoodController::class, "add"]);
     }
 );
 

@@ -18,6 +18,7 @@ class FoodFactory extends Factory
     {
         return [
             'food_name' => "Froozen food",
+            'user_id' => fake()->numberBetween(1, 10),
             'weight' => fake()->numberBetween(1, 10),
             'price' => fake()->numberBetween(10000, 100000), // password
             "stock" => fake()->numberBetween(1, 100),

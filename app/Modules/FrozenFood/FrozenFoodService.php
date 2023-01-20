@@ -2,6 +2,7 @@
 
 namespace App\Modules\FrozenFood;
 
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -28,6 +29,12 @@ class FrozenFoodService
         $data = $this->repository->selectAllFrozenFood();
         $paginatedData = $this->paginate($data, $perPage);
         return $paginatedData;
+    }
+
+    public function createNewFroozenFood(array $input)
+    {
+        $success = $this->repository->insert($input);
+        if (!$success) throw new Exception("Failed to create new data");
     }
 }
 

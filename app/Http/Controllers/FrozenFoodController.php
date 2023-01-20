@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Food;
+use App\Http\Requests\CreateFoodRequest;
 use App\Modules\FrozenFood\FrozenFoodService;
+use Exception;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class FrozenFoodController extends Controller
 {
@@ -26,5 +26,16 @@ class FrozenFoodController extends Controller
     public function addFormInput(Request $request)
     {
         return view("pages.add");
+    }
+
+    public function add(CreateFoodRequest $request)
+    {
+        $data = $request->validated();
+        try {
+            $this->service->createNewFroozenFood($data);
+            return redirect()->back()->with("success", "Data has been successfully created");
+        } catch (Exception $err) {
+            return redirect()->back()->with("error", $err->getMessage());
+        }
     }
 }

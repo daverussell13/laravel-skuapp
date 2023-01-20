@@ -18,8 +18,6 @@
             <li class="{{ request()->is('food/table') ? 'active' : '' }}"><a class="nav-link" href="/food/table"><i
                         class="fas fa-columns"></i>
                     <span>Table</span></a></li>
-            <li class=""><a class="nav-link" href="blank.html"><i class="far fa-square"></i>
-                    <span>Blank Page</span></a></li>
         </ul>
     </aside>
 </div>

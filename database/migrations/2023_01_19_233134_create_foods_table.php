@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('foods', function (Blueprint $table) {
             $table->id('food_id');
+            $table->unsignedBigInteger("user_id");
             $table->string('food_name');
             $table->integer('weight')->unsigned();
             $table->integer('price')->unsigned();
@@ -23,6 +24,7 @@ return new class extends Migration
             $table->string('description');
             $table->timestamps();
             $table->softDeletes();
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
