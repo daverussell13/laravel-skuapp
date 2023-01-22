@@ -6,7 +6,7 @@
             <div class="section-header">
                 <h1>Update Frozen Food Data</h1>
                 <div class="section-header-breadcrumb">
-                    <div class="breadcrumb-item active"><a href="/food/table">Go Back</a></div>
+                    <div class="breadcrumb-item active"><a href="#" onclick="goBackHdl()">Go Back</a></div>
                 </div>
             </div>
             <div class="section-body">
@@ -102,6 +102,7 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="{{ asset('assets/js/page/forms-advanced-forms.js') }}"></script>
 
     @if (session('error'))

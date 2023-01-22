@@ -7,6 +7,10 @@
 
 "use strict";
 
+function goBackHdl() {
+    window.history.back();
+}
+
 function deleteFrozenHdl(id) {
     $.ajax(`http://localhost:8000/food/${id}`, {
         type: "DELETE",
