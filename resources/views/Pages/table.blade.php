@@ -58,21 +58,21 @@
                                             @foreach ($foods as $food)
                                                 <tr>
                                                     <td>{{ $i++ }}</td>
-                                                    <td>{{ $food->food_name }}</td>
+                                                    <td>{{ $food->name }}</td>
                                                     <td>{{ $food->weight }}</td>
                                                     <td>{{ $food->price }}</td>
                                                     <td>{{ $food->stock }}</td>
-                                                    <td>{{ date('d M Y', strtotime($food->expiration_date)) }}</td>
+                                                    <td>{{ $food->expiration_date }}</td>
                                                     <td>{{ $food->description }}</td>
                                                     <td>
                                                         <div class="d-flex">
-                                                            <a href="/food/update/{{ $food->food_id }}"
+                                                            <a href="/food/update/{{ $food->id }}"
                                                                 class="btn btn-info mr-2">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
                                                             <button class="btn btn-danger"
                                                                 data-confirm="Realy?|Do you want to continue?"
-                                                                data-confirm-yes="deleteFrozenHdl({{ $food->food_id }})">
+                                                                data-confirm-yes="deleteFrozenHdl({{ $food->id }})">
                                                                 <i class="fas fa-trash"></i>
                                                             </button>
                                                         </div>

@@ -20,7 +20,7 @@ class FrozenFoodRepository
     public function getById(int $id)
     {
         $result = DB::select("SELECT * FROM $this->tableName
-            WHERE food_id = ? AND deleted_at IS NULL", [$id]);
+            WHERE id = ? AND deleted_at IS NULL", [$id]);
         return $result;
     }
 
@@ -36,7 +36,7 @@ class FrozenFoodRepository
     public function insert(array $input)
     {
         $status = DB::insert("INSERT INTO $this->tableName
-            (food_name, user_id, weight, price, stock, expiration_date, description)
+            (name, user_id, weight, price, stock, expiration_date, description)
             values (?, ?, ?, ?, ?, ?, ?)",
             [
                 $input["name"],
@@ -53,8 +53,8 @@ class FrozenFoodRepository
     public function update(array $input, int $id)
     {
         $status = DB::update("UPDATE $this->tableName
-            SET food_name = ?, weight = ?, price = ?, stock = ?, expiration_date = ?, description = ?, updated_at = ?
-            WHERE food_id = ?",
+            SET name = ?, weight = ?, price = ?, stock = ?, expiration_date = ?, description = ?, updated_at = ?
+            WHERE id = ?",
             [
                 $input["name"],
                 $input["weight"],
@@ -71,7 +71,7 @@ class FrozenFoodRepository
     public function softDeleteById(int $id)
     {
         $status = DB::update("UPDATE $this->tableName
-            SET deleted_at = ? WHERE food_id = ?",
+            SET deleted_at = ? WHERE id = ?",
             [
                 Carbon::now()->toDateTimeString(),
                 $id

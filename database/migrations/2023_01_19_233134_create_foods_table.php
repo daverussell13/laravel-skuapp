@@ -14,14 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('foods', function (Blueprint $table) {
-            $table->id('food_id');
+            $table->id();
             $table->unsignedBigInteger("user_id");
-            $table->string('food_name');
+            $table->string('name', 64);
             $table->integer('weight')->unsigned();
             $table->integer('price')->unsigned();
             $table->integer('stock')->unsigned();
             $table->date('expiration_date');
-            $table->string('description');
+            $table->string('description', 512);
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');

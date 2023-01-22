@@ -61,7 +61,7 @@ class FrozenFoodService
         $keyword ?? $keyword = "";
         switch($colName) {
             case "name":
-                $data = $this->repository->getLikeCol("food_name", $keyword);
+                $data = $this->repository->getLikeCol("name", $keyword);
                 break;
             case "weight":
                 $data = $this->repository->getLikeCol("weight", $keyword);

@@ -17,7 +17,7 @@ class FoodFactory extends Factory
     public function definition()
     {
         return [
-            'food_name' => "Froozen food",
+            'name' => fake()->name(),
             'user_id' => fake()->numberBetween(1, 10),
             'weight' => fake()->numberBetween(1, 10),
             'price' => fake()->numberBetween(10000, 100000), // password

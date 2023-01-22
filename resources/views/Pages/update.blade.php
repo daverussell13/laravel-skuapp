@@ -12,7 +12,7 @@
             <div class="section-body">
                 <div class="row">
                     <div class="col-12">
-                        <form action="/food/update/{{ $food->food_id }}" method="POST">
+                        <form action="/food/update/{{ $food->id }}" method="POST">
                             @method('PUT')
                             @csrf
                             <div class="card">
@@ -23,7 +23,7 @@
                                     <div class="form-group">
                                         <label>Food Name</label>
                                         <input type="text" class="form-control @error('name') is-invalid @enderror"
-                                            name="name" value="{{ $food->food_name }}">
+                                            name="name" value="{{ $food->name }}">
                                         @error('name')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
