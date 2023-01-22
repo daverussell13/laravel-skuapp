@@ -8,7 +8,7 @@
 ## Cara setup local development
 -	Git clone project ini
 -	Pastikan telah memenuhi requirements
--   Buka terminal pastikan bahwa path berada pada folder yang sudah di clone
+-   Buka terminal cd ke project yang telah di clone (pastikan bahwa path berada pada root folder yang sudah di clone)
 -	Tuliskan perintah "composer install" pada terminal untuk menginstal dependency
 -	Copy file .env.example lalu ubah namanya menjadi .env
 -	Masukan setingan database pada folder .env seperti nama host, user, password, dan nama database
