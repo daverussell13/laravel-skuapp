@@ -2,6 +2,7 @@
 
 namespace App\Modules\FrozenFood;
 
+use App\Modules\Common\Helpers;
 use Exception;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
@@ -67,6 +68,7 @@ class FrozenFoodService
                 $data = $this->repository->getLikeCol("weight", $keyword);
                 break;
             case "price":
+                $keyword = Helpers::clearCurrencyFormat($keyword);
                 $data = $this->repository->getLikeCol("price", $keyword);
                 break;
             case "stock":

@@ -43,7 +43,7 @@
                                     <table class="table table-striped" id="table-1">
                                         <thead>
                                             <tr>
-                                                <th>No</th>
+                                                <th class="text-center">No</th>
                                                 <th>Name</th>
                                                 <th>Weight</th>
                                                 <th>Price</th>
@@ -57,12 +57,14 @@
                                             @php $i = 1 @endphp
                                             @foreach ($foods as $food)
                                                 <tr>
-                                                    <td>{{ $i++ }}</td>
+                                                    <td class="text-center">{{ $i++ }}</td>
                                                     <td>{{ $food->name }}</td>
-                                                    <td>{{ $food->weight }}</td>
-                                                    <td>{{ $food->price }}</td>
-                                                    <td>{{ $food->stock }}</td>
-                                                    <td>{{ $food->expiration_date }}</td>
+                                                    <td class="text-center">{{ $food->weight }}</td>
+                                                    <td class="text-center" style="white-space: nowrap;">
+                                                        Rp. {{ number_format($food->price, 2, ',', '.') }}
+                                                    </td>
+                                                    <td class="text-center">{{ $food->stock }}</td>
+                                                    <td class="text-center">{{ $food->expiration_date }}</td>
                                                     <td>{{ $food->description }}</td>
                                                     <td>
                                                         <div class="d-flex">
