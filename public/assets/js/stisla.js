@@ -1,6 +1,11 @@
 "use strict";
 
 (function ($, window, i) {
+    $.ajaxSetup({
+        headers: {
+            "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+        },
+    });
     if (window.innerWidth < 992) {
         sessionStorage.setItem("sidebar-toggle-collapsed", "");
     }

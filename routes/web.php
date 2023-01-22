@@ -24,10 +24,11 @@ Route::group(
         Route::get("/logout", [AuthController::class, "logout"]);
         Route::get("/food/table", [FrozenFoodController::class, "table"]);
         Route::get("/food/create", [FrozenFoodController::class, "addFormInput"]);
-        Route::post("/food/create", [FrozenFoodController::class, "add"]);
         Route::get("/food/update/{id}", [FrozenFoodController::class, "updateFormInput"]);
+        Route::post("/food/create", [FrozenFoodController::class, "add"]);
+        Route::post("/food/search", [FrozenFoodController::class, "search"]);
         Route::put("/food/update/{id}", [FrozenFoodController::class, "update"]);
-        Route::get("/food/delete/{id}", [FrozenFoodController::class, "delete"]);
+        Route::delete("/food/{id}", [FrozenFoodController::class, "delete"]);
     }
 );
 

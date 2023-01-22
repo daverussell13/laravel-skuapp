@@ -1,8 +1,5 @@
 @extends('layouts.authlayout')
 
-@section('meta')
-@endsection
-
 @section('content')
     <div id="app">
         <section class="section">

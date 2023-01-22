@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FrozenFoodRequest;
+use App\Http\Requests\FrozenFoodSearchRequest;
 use App\Models\Food;
 use App\Modules\FrozenFood\FrozenFoodService;
 use Exception;
@@ -70,5 +71,12 @@ class FrozenFoodController extends Controller
         } catch (Exception $err) {
             return redirect()->back()->with("error", $err->getMessage());
         }
+    }
+
+    public function search(FrozenFoodSearchRequest $request)
+    {
+        $foods = $this->service->searchByColName($request->validated());
+        $foods->setPath('/food/table');
+        return view('pages.table', compact('foods'));
     }
 }

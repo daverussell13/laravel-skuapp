@@ -2,6 +2,7 @@
 
 namespace App\Modules\FrozenFood;
 
+use App\Modules\Common\Helpers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 
@@ -9,15 +10,26 @@ class FrozenFoodRepository
 {
     private $tableName = "foods";
 
-    public function selectAllFrozenFood()
+    public function getAllFrozenFood()
     {
-        $result = DB::select("SELECT * FROM $this->tableName WHERE deleted_at IS NULL");
+        $result = DB::select("SELECT * FROM $this->tableName
+            WHERE deleted_at IS NULL");
         return $result;
     }
 
     public function getById(int $id)
     {
-        $result = DB::select("SELECT * FROM $this->tableName WHERE food_id = ? AND deleted_at IS NULL", [$id]);
+        $result = DB::select("SELECT * FROM $this->tableName
+            WHERE food_id = ? AND deleted_at IS NULL", [$id]);
+        return $result;
+    }
+
+    public function getLikeCol(string $colname, string $keyword)
+    {
+        $result = DB::select(
+            DB::raw("SELECT * FROM $this->tableName WHERE $colname LIKE ? AND deleted_at IS NULL"),
+            ['%' . $keyword . '%']
+        );
         return $result;
     }
 

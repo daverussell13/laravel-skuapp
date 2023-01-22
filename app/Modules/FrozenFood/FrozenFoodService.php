@@ -3,14 +3,9 @@
 namespace App\Modules\FrozenFood;
 
 use Exception;
-use GrahamCampbell\ResultType\Success;
-use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use Mockery\CountValidator\Exact;
-
-use function PHPUnit\Framework\returnSelf;
 
 class FrozenFoodService
 {
@@ -21,7 +16,7 @@ class FrozenFoodService
         $this->repository = $repository;
     }
 
-     public function paginate($items, $perPage, $page = null, $options = [])
+     public function paginate($items, $perPage = 5, $page = null, $options = [])
     {
         $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
         $items = $items instanceof Collection ? $items : Collection::make($items);
@@ -30,7 +25,7 @@ class FrozenFoodService
 
     public function getPaginatedData(int $perPage)
     {
-        $data = $this->repository->selectAllFrozenFood();
+        $data = $this->repository->getAllFrozenFood();
         $paginatedData = $this->paginate($data, $perPage);
         return $paginatedData;
     }
@@ -58,6 +53,44 @@ class FrozenFoodService
     {
         $success = $this->repository->softDeleteById($id);
         if (!$success) throw new Exception("Failed to delete data");
+    }
+
+    public function searchRepositoryMapper(string $colName, ?string $keyword)
+    {
+        $data = [];
+        $keyword ?? $keyword = "";
+        switch($colName) {
+            case "name":
+                $data = $this->repository->getLikeCol("food_name", $keyword);
+                break;
+            case "weight":
+                $data = $this->repository->getLikeCol("weight", $keyword);
+                break;
+            case "price":
+                $data = $this->repository->getLikeCol("price", $keyword);
+                break;
+            case "stock":
+                $data = $this->repository->getLikeCol("stock", $keyword);
+                break;
+            case "expiration":
+                $data = $this->repository->getLikeCol("expiration_date", $keyword);
+                break;
+            case "description":
+                $data = $this->repository->getLikeCol("description", $keyword);
+                break;
+            default:
+                break;
+        }
+        return $data;
+    }
+
+    public function searchByColName(array $input)
+    {
+        $colName = $input["colname"];
+        $keyword = $input["keyword"];
+        $data = $this->searchRepositoryMapper($colName, $keyword);
+        $paginatedData = $this->paginate($data);
+        return $paginatedData;
     }
 }
 

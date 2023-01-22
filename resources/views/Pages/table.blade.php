@@ -15,10 +15,30 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
-                            <div class="card-header">
-                                <h4>Frozen Food</h4>
-                            </div>
                             <div class="card-body">
+                                <form action="/food/search" method="POST">
+                                    @csrf
+                                    <div class="float-left">
+                                        <select class="form-control selectric" name="colname">
+                                            <option value="name">Name</option>
+                                            <option value="weight">Weight</option>
+                                            <option value="price">Price</option>
+                                            <option value="stock">Stock</option>
+                                            <option value="description">Description</option>
+                                        </select>
+                                    </div>
+                                    <div class="float-right">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Search" name="keyword">
+                                            <div class="input-group-append">
+                                                <button type="submit" class="btn btn-primary">
+                                                    <i class="fas fa-search"></i>
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                                <div class="clearfix mb-3"></div>
                                 <div class="table-responsive">
                                     <table class="table table-striped" id="table-1">
                                         <thead>
@@ -42,14 +62,19 @@
                                                     <td>{{ $food->weight }}</td>
                                                     <td>{{ $food->price }}</td>
                                                     <td>{{ $food->stock }}</td>
-                                                    <td>{{ $food->expiration_date }}</td>
+                                                    <td>{{ date('d M Y', strtotime($food->expiration_date)) }}</td>
                                                     <td>{{ $food->description }}</td>
                                                     <td>
                                                         <div class="d-flex">
                                                             <a href="/food/update/{{ $food->food_id }}"
-                                                                class="btn btn-info mr-2">Update</a>
-                                                            <a href="/food/delete/{{ $food->food_id }}"
-                                                                class="btn btn-danger">Delete</a>
+                                                                class="btn btn-info mr-2">
+                                                                <i class="fas fa-edit"></i>
+                                                            </a>
+                                                            <button class="btn btn-danger"
+                                                                data-confirm="Realy?|Do you want to continue?"
+                                                                data-confirm-yes="deleteFrozenHdl({{ $food->food_id }})">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button>
                                                         </div>
                                                     </td>
                                                 </tr>
@@ -72,6 +97,7 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
     @if (session('error'))
         <script>
             iziToast.error({

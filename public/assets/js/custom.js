@@ -6,3 +6,15 @@
  */
 
 "use strict";
+
+function deleteFrozenHdl(id) {
+    $.ajax(`http://localhost:8000/food/${id}`, {
+        type: "DELETE",
+        success: function (data, status, xhr) {
+            location.reload();
+        },
+        error: function (jqXhr, textStatus, errorMessage) {
+            location.reload();
+        },
+    });
+}
