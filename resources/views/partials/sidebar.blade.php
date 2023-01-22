@@ -21,8 +21,8 @@
                     <span>Frozen Food</span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="/food/create">Add</a></li>
-                    <li><a href="/food/table">Table</a></li>
+                    <li class="{{ request()->is('food/create') ? 'active' : '' }}"><a href="/food/create">Add</a></li>
+                    <li class="{{ request()->is('food/table') ? 'active' : '' }}"><a href="/food/table">Table</a></li>
                 </ul>
             </li>
         </ul>

@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\FrozenFoodRequest;
 use App\Http\Requests\FrozenFoodSearchRequest;
-use App\Models\Food;
 use App\Modules\FrozenFood\FrozenFoodService;
 use Exception;
 use Illuminate\Http\Request;
-use PhpParser\Node\Expr;
 
 class FrozenFoodController extends Controller
 {
@@ -23,12 +21,12 @@ class FrozenFoodController extends Controller
     {
         $foods = $this->service->getPaginatedData(5);
         $foods->setPath('/food/table');
-        return view('pages.table', compact('foods'));
+        return view('pages.frozenfood.table', compact('foods'));
     }
 
     public function addFormInput()
     {
-        return view("pages.add");
+        return view("pages.frozenfood.add");
     }
 
     public function add(FrozenFoodRequest $request)
@@ -46,7 +44,7 @@ class FrozenFoodController extends Controller
     {
         try {
             $data = $this->service->getDataById($id);
-            return view("pages.update", ["food" => $data]);
+            return view("pages.frozenfood.update", ["food" => $data]);
         } catch(Exception $err) {
             return redirect()->back()->with("error", $err->getMessage());
         }
@@ -77,6 +75,6 @@ class FrozenFoodController extends Controller
     {
         $foods = $this->service->searchByColName($request->validated());
         $foods->setPath('/food/table');
-        return view('pages.table', compact('foods'));
+        return view('pages.frozenfood.table', compact('foods'));
     }
 }
