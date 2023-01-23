@@ -6,14 +6,28 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionRepository
 {
-    private $tableName = "transactions";
+    private \PDO $connection;
 
-    public function getAllTransaction()
+    public function __construct()
     {
-        $result = DB::select("SELECT * FROM $this->tableName
-            WHERE deleted_at IS NULL");
-        return $result;
+        $this->connection = DB::connection()->getPdo();
+    }
+
+    public function getAllTransactionWithUser()
+    {
+        $query = <<<SQL
+            SELECT
+                t.created_at as date,
+                t.user_id as user_id,
+                u.name as user_name,
+                u.email as user_email
+            FROM transactions t
+            INNER JOIN users u ON t.user_id = u.id
+        SQL;
+
+        $statement = $this->connection->prepare($query);
+        $statement->execute();
+
+        return $statement->fetchAll();
     }
 }
-
-

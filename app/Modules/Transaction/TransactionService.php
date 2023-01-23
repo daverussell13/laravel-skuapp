@@ -2,23 +2,22 @@
 
 namespace App\Modules\Transaction;
 
+use App\Modules\Transaction\TransactionRepository;
 use App\Modules\Common\Helpers;
 
 class TransactionService
 {
     private TransactionRepository $repository;
 
-    public function __construct(TransactionRepository $repository)
+    public function __construct(TransactionRepository $repo)
     {
-        $this->repository = $repository;
+        $this->repository = $repo;
     }
 
-    public function getPaginatedData(int $perPage)
+    public function getPaginatedData($perPage)
     {
-        $data = $this->repository->getAllTransaction();
+        $data = $this->repository->getAllTransactionWithUser();
         $paginatedData = Helpers::paginate($data, $perPage);
         return $paginatedData;
     }
 }
-
-

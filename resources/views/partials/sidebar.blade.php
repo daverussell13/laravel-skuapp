@@ -17,6 +17,17 @@
             <li class="menu-header">Menu</li>
             <li class="nav-item dropdown">
                 <a href="#" class="nav-link has-dropdown">
+                    <i class="fas fa-book"></i>
+                    <span>Transactions</span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="{{ request()->is('transaction/table') ? 'active' : '' }}">
+                        <a href="/transaction/table">Table</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a href="#" class="nav-link has-dropdown">
                     <i class="fas fa-utensils"></i>
                     <span>Frozen Food</span>
                 </a>

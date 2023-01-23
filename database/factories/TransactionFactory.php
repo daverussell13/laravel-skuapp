@@ -18,7 +18,7 @@ class TransactionFactory extends Factory
     {
         return [
             'user_id' => fake()->numberBetween(1, 10),
-            "created_at" => fake()->date('Y-m-d','+100 months'),
+            "created_at" => fake()->dateTime(),
         ];
     }
 }

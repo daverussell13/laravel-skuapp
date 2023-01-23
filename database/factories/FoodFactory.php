@@ -23,7 +23,7 @@ class FoodFactory extends Factory
             'price' => fake()->numberBetween(10000, 100000), // password
             "stock" => fake()->numberBetween(20, 100),
             "expiration_date" => fake()->date('Y-m-d','+100 months'),
-            "description" => fake()->text(),
+            "description" => fake()->text(20),
         ];
     }
 }

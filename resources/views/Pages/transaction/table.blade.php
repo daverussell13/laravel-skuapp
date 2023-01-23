@@ -19,11 +19,8 @@
                                     @csrf
                                     <div class="float-left">
                                         <select class="form-control selectric" name="colname">
-                                            <option value="name">Id</option>
-                                            <option value="weight">We</option>
-                                            <option value="price">Price</option>
-                                            <option value="stock">Stock</option>
-                                            <option value="description">Description</option>
+                                            <option value="date">Date</option>
+                                            <option value="date">Admin Name</option>
                                         </select>
                                     </div>
                                     <div class="float-right">
@@ -43,40 +40,22 @@
                                         <thead>
                                             <tr>
                                                 <th class="text-center">No</th>
-                                                <th>Name</th>
-                                                <th>Weight</th>
-                                                <th>Price</th>
-                                                <th>Stock</th>
-                                                <th>Expiration</th>
-                                                <th>Description</th>
-                                                <th>Action</th>
+                                                <th class="text-center">Transaction Time</th>
+                                                <th class="text-center">Admin Name</th>
+                                                <th class="text-center">Admin Email</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             @php $i = 1 @endphp
-                                            @foreach ($foods as $food)
+                                            @foreach ($transactions as $transaction)
                                                 <tr>
                                                     <td class="text-center">{{ $i++ }}</td>
-                                                    <td>{{ $food->name }}</td>
-                                                    <td class="text-center">{{ $food->weight }}</td>
-                                                    <td class="text-center" style="white-space: nowrap;">
-                                                        Rp. {{ number_format($food->price, 2, ',', '.') }}
-                                                    </td>
-                                                    <td class="text-center">{{ $food->stock }}</td>
-                                                    <td class="text-center">{{ $food->expiration_date }}</td>
-                                                    <td>{{ $food->description }}</td>
-                                                    <td>
-                                                        <div class="d-flex">
-                                                            <a href="/food/update/{{ $food->id }}"
-                                                                class="btn btn-info mr-2">
-                                                                <i class="fas fa-edit"></i>
-                                                            </a>
-                                                            <button class="btn btn-danger"
-                                                                data-confirm="Realy?|Do you want to continue?"
-                                                                data-confirm-yes="deleteFrozenHdl({{ $food->id }})">
-                                                                <i class="fas fa-trash"></i>
-                                                            </button>
-                                                        </div>
+                                                    <td class="text-center">{{ $transaction['date'] }}</td>
+                                                    <td class="text-center">{{ $transaction['user_name'] }}</td>
+                                                    <td class="text-center">{{ $transaction['user_email'] }}</td>
+                                                    <td class="text-center">
+                                                        <a href="#" class="btn btn-primary">View Details</a>
                                                     </td>
                                                 </tr>
                                             @endforeach
@@ -86,7 +65,7 @@
                             </div>
                             <div class="card-footer text-right">
                                 <nav class="d-inline-block">
-                                    {{ $foods->links('pagination::bootstrap-4') }}
+                                    {{ $transactions->links('pagination::bootstrap-4') }}
                                 </nav>
                             </div>
                         </div>
