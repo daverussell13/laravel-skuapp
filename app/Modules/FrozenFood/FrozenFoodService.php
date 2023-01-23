@@ -4,9 +4,6 @@ namespace App\Modules\FrozenFood;
 
 use App\Modules\Common\Helpers;
 use Exception;
-use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Collection;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class FrozenFoodService
 {
@@ -17,17 +14,10 @@ class FrozenFoodService
         $this->repository = $repository;
     }
 
-     public function paginate($items, $perPage = 5, $page = null, $options = [])
-    {
-        $page = $page ?: (Paginator::resolveCurrentPage() ?: 1);
-        $items = $items instanceof Collection ? $items : Collection::make($items);
-        return new LengthAwarePaginator($items->forPage($page, $perPage), $items->count(), $perPage, $page, $options);
-    }
-
     public function getPaginatedData(int $perPage)
     {
         $data = $this->repository->getAllFrozenFood();
-        $paginatedData = $this->paginate($data, $perPage);
+        $paginatedData = Helpers::paginate($data, $perPage);
         return $paginatedData;
     }
 
@@ -91,7 +81,7 @@ class FrozenFoodService
         $colName = $input["colname"];
         $keyword = $input["keyword"];
         $data = $this->searchRepositoryMapper($colName, $keyword);
-        $paginatedData = $this->paginate($data);
+        $paginatedData = Helpers::paginate($data);
         return $paginatedData;
     }
 }

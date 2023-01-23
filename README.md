@@ -16,4 +16,5 @@
 -   Tuliskan perintah "php artisan migrate --seed" pada terminal untuk melakukan database migration dan seeding database (pastikan konfigurasi sudah benar pada file .env dan sudah membuat database dengan nama yang sama dengan file konfigurasi)
 -	Tuliskan perintah "php artisan serve" pada terminal untuk menjalankan server
 -	Buka browser lalu ketikan url yang telah digenerate oleh php artisan serve (default : http://localhost:8000/)
+-   Jika sudah menjalankan seed untuk testing ada beberapa user yang telah di generate salah satunya (email : test@example.com, password : password)
 

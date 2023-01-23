@@ -21,9 +21,9 @@ class FoodFactory extends Factory
             'user_id' => fake()->numberBetween(1, 10),
             'weight' => fake()->numberBetween(1, 10),
             'price' => fake()->numberBetween(10000, 100000), // password
-            "stock" => fake()->numberBetween(1, 100),
+            "stock" => fake()->numberBetween(20, 100),
             "expiration_date" => fake()->date('Y-m-d','+100 months'),
-            "description" => "Super yummy frozen food"
+            "description" => fake()->text(),
         ];
     }
 }
