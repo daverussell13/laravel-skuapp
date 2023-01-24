@@ -17,14 +17,14 @@ class TransactionService
 
     public function getPaginatedData($perPage)
     {
-        $data = $this->repository->getAllTransactionWithUser();
+        $data = $this->repository->getAllWithUser();
         $paginatedData = Helpers::paginate($data, $perPage);
         return $paginatedData;
     }
 
     public function getSingleTransaction($id)
     {
-        $transaction = $this->repository->getTransactionById($id);
+        $transaction = $this->repository->getById($id);
         if (!$transaction)
             throw new Exception("Transaction not found");
         return $transaction;
@@ -32,7 +32,6 @@ class TransactionService
 
     public function getRelatedTransactionDetails($transactionId)
     {
-        $transactionDetails = $this->repository->getTransactionDetailsById($transactionId);
-        return $transactionDetails;
+        return $this->repository->getDetailsById($transactionId);
     }
 }

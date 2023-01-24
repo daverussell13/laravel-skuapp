@@ -14,7 +14,7 @@ class TransactionRepository
         $this->connection = DB::connection()->getPdo();
     }
 
-    public function getAllTransactionWithUser()
+    public function getAllWithUser()
     {
         $query = <<<SQL
             SELECT
@@ -48,7 +48,7 @@ class TransactionRepository
         return $transactions;
     }
 
-    public function getTransactionById(int $id)
+    public function getById(int $id)
     {
         $query = <<<SQL
             SELECT
@@ -80,7 +80,7 @@ class TransactionRepository
         }
     }
 
-    public function getTransactionDetailsById(int $id)
+    public function getDetailsById(int $id)
     {
         $query = <<<SQL
             SELECT

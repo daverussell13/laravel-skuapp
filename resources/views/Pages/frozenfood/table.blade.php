@@ -18,17 +18,20 @@
                                 <form action="/food/search" method="POST">
                                     @csrf
                                     <div class="float-left">
-                                        <select class="form-control selectric" name="colname">
+                                        <select id="searchcol" class="form-control selectric" name="colname"
+                                            onchange="searchColChange()">
                                             <option value="name">Name</option>
                                             <option value="weight">Weight</option>
                                             <option value="price">Price</option>
                                             <option value="stock">Stock</option>
+                                            <option value="expiration">Expiration</option>
                                             <option value="description">Description</option>
                                         </select>
                                     </div>
                                     <div class="float-right">
                                         <div class="input-group">
-                                            <input type="text" class="form-control" placeholder="Search" name="keyword">
+                                            <input id="input-keyword" type="text" class="form-control"
+                                                placeholder="Search" name="keyword">
                                             <div class="input-group-append">
                                                 <button type="submit" class="btn btn-primary">
                                                     <i class="fas fa-search"></i>

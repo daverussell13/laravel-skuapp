@@ -32,6 +32,13 @@ class FrozenFoodRepository
         return $result;
     }
 
+    public function getByDate(string $date)
+    {
+        $result = DB::select("SELECT * FROM $this->tableName
+            WHERE expiration_date = ? AND deleted_at IS NULL", [$date]);
+        return $result;
+    }
+
     public function insert(array $input)
     {
         $status = DB::insert("INSERT INTO $this->tableName

@@ -65,7 +65,7 @@ class FrozenFoodService
                 $data = $this->repository->getLikeCol("stock", $keyword);
                 break;
             case "expiration":
-                $data = $this->repository->getLikeCol("expiration_date", $keyword);
+                $data = $this->repository->getByDate($keyword);
                 break;
             case "description":
                 $data = $this->repository->getLikeCol("description", $keyword);

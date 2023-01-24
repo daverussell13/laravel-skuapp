@@ -22,3 +22,13 @@ function deleteFrozenHdl(id) {
         },
     });
 }
+
+function searchColChange() {
+    const selectedCol = document.getElementById("searchcol").value;
+    const searcBar = document.getElementById("input-keyword");
+    if (selectedCol == "expiration") {
+        searcBar.setAttribute("type", "date");
+    } else {
+        searcBar.setAttribute("type", "text");
+    }
+}
