@@ -22,7 +22,7 @@
                                 <td class="d-flex justify-content-center">
                                     <input wire:model="items.{{ $index }}.food_qty" type="number"
                                         class="form-control" style="max-width: 80px" min="1"
-                                        value="{{ $item['food_qty'] }}">
+                                        max="{{ $item['food_stock'] }}" value="{{ $item['food_qty'] }}">
                                 </td>
                                 <td class="text-center">
                                     <a href="#" class="btn btn-danger"
@@ -76,7 +76,8 @@
                                 </td>
                                 <td class="text-center">{{ $food->stock }}</td>
                                 <td class="text-center">
-                                    <button href="#" class="btn btn-success"
+                                    <button href="#" @if (!$food->stock) @disabled(true) @endif
+                                        class="btn btn-success @if (!$food->stock) disabled @endif"
                                         wire:click="$emit('addItem',{{ $food->id }})">
                                         <i class="fas fa-plus"></i>
                                     </button>

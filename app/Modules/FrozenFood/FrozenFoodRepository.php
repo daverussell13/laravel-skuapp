@@ -84,5 +84,14 @@ class FrozenFoodRepository
             ]);
         return $status;
     }
+
+    public function decrementStock(int $id, int $value)
+    {
+        $status = DB::update(
+            "UPDATE $this->tableName SET stock = stock - ? WHERE id = ?",
+            [$value, $id]
+        );
+        return $status;
+    }
 }
 

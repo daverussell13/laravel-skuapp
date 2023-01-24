@@ -44,7 +44,8 @@ class CreateTransactionTable extends Component
             "food_id" => $food->id,
             "food_name" => $food->name,
             "food_price" => $food->price,
-            "food_qty" => 1
+            "food_qty" => 1,
+            "food_stock" => $food->stock
         ];
     }
 

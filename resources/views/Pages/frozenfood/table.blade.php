@@ -47,7 +47,7 @@
                                             <tr>
                                                 <th class="text-center">No</th>
                                                 <th>Name</th>
-                                                <th class="text-center">Weight</th>
+                                                <th class="text-center" style="white-space: nowrap;">Weight (g)</th>
                                                 <th class="text-center">Price</th>
                                                 <th class="text-center">Stock</th>
                                                 <th class="text-center">Expiration</th>

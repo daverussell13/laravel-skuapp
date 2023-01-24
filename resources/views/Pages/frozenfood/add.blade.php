@@ -31,9 +31,9 @@
                                         @enderror
                                     </div>
                                     <div class="form-group">
-                                        <label>Weight (kg)</label>
+                                        <label>Weight (g)</label>
                                         <input type="number" class="form-control @error('weight') is-invalid @enderror"
-                                            name="weight">
+                                            name="weight" min="0">
                                         @error('weight')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -42,8 +42,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Stock</label>
-                                        <input type="number" class="form-control @error('stock') is-invalid @enderror"
-                                            name="stock">
+                                        <input type="float" class="form-control @error('stock') is-invalid @enderror"
+                                            name="stock" min="1">
                                         @error('stock')
                                             <div class="invalid-feedback">
                                                 {{ $message }}
@@ -60,7 +60,7 @@
                                             </div>
                                             <input type="number"
                                                 class="form-control currency @error('price') is-invalid @enderror"
-                                                name="price">
+                                                name="price" min="1">
                                             @error('price')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
