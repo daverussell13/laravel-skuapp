@@ -47,12 +47,12 @@
                                             <tr>
                                                 <th class="text-center">No</th>
                                                 <th>Name</th>
-                                                <th>Weight</th>
-                                                <th>Price</th>
-                                                <th>Stock</th>
-                                                <th>Expiration</th>
+                                                <th class="text-center">Weight</th>
+                                                <th class="text-center">Price</th>
+                                                <th class="text-center">Stock</th>
+                                                <th class="text-center">Expiration</th>
                                                 <th>Description</th>
-                                                <th>Action</th>
+                                                <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -66,10 +66,12 @@
                                                         Rp. {{ number_format($food->price, 2, ',', '.') }}
                                                     </td>
                                                     <td class="text-center">{{ $food->stock }}</td>
-                                                    <td class="text-center">{{ $food->expiration_date }}</td>
+                                                    <td class="text-center" style="white-space: nowrap;">
+                                                        {{ date('d M Y', strtotime($food->expiration_date)) }}
+                                                    </td>
                                                     <td>{{ $food->description }}</td>
                                                     <td>
-                                                        <div class="d-flex">
+                                                        <div class="d-flex justify-content-center">
                                                             <a href="/food/update/{{ $food->id }}"
                                                                 class="btn btn-info mr-2">
                                                                 <i class="fas fa-edit"></i>
