@@ -87,7 +87,7 @@ class TransactionRepository
                 td.quantity as quantity,
                 f.name as food_name,
                 f.weight as food_weight,
-                f.price as food_price
+                td.price as food_price
             FROM transaction_details td
             INNER JOIN foods f ON td.food_id = f.id AND td.transaction_id = ?
         SQL;

@@ -22,7 +22,7 @@ class TransactionService
         return $paginatedData;
     }
 
-    public function getSingleTransaction(int $id)
+    public function getSingleTransaction($id)
     {
         $transaction = $this->repository->getTransactionById($id);
         if (!$transaction)
@@ -30,7 +30,7 @@ class TransactionService
         return $transaction;
     }
 
-    public function getRelatedTransactionDetails(int $transactionId)
+    public function getRelatedTransactionDetails($transactionId)
     {
         $transactionDetails = $this->repository->getTransactionDetailsById($transactionId);
         return $transactionDetails;

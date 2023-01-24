@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name', 32);
             $table->string('email', 128)->unique();
-            $table->binary('password', 60);
+            $table->binary('password');
             $table->string("phone_number", 20)->unique();
             $table->string("address", 64);
             $table->timestamps();

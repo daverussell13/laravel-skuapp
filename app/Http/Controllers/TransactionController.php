@@ -25,6 +25,7 @@ class TransactionController extends Controller
         try {
             $transaction = $this->service->getSingleTransaction($id);
             $transactionDetails = $this->service->getRelatedTransactionDetails($id);
+            return view("pages.transaction.detail", compact(["transaction", "transactionDetails"]));
         } catch (\Exception $err) {
             abort(404);
         }

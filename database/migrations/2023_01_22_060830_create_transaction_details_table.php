@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer("quantity");
             $table->unsignedBigInteger("transaction_id");
             $table->unsignedBigInteger("food_id");
+            $table->integer("price");
             $table->foreign("food_id")->references("id")->on("foods");
             $table->foreign("transaction_id")->references("id")->on("transactions");
             $table->timestamps();

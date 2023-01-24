@@ -19,6 +19,7 @@ class TransactionDetailFactory extends Factory
         return [
             'quantity' => fake()->numberBetween(1, 5),
             'food_id' => fake()->numberBetween(1, 10),
+            'price' => fake()->numberBetween(10000, 100000),
             'transaction_id' => fake()->numberBetween(1, 10)
         ];
     }
