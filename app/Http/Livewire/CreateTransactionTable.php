@@ -28,7 +28,9 @@ class CreateTransactionTable extends Component
     public function render()
     {
         return view('livewire.create-transaction-table', [
-            'foods' => Food::where('name', 'like', '%'.$this->search.'%')->paginate(5),
+            'foods' => Food::where('name', 'like', '%'.$this->search.'%')
+                        ->whereNull('deleted_at')
+                        ->paginate(5),
             'items' => $this->items
         ]);
     }

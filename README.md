@@ -16,5 +16,9 @@
 -   Tuliskan perintah "php artisan migrate --seed" pada terminal untuk melakukan database migration dan seeding database (pastikan konfigurasi sudah benar pada file .env dan sudah membuat database dengan nama yang sama dengan file konfigurasi)
 -	Tuliskan perintah "php artisan serve" pada terminal untuk menjalankan server
 -	Buka browser lalu ketikan url yang telah digenerate oleh php artisan serve (default : http://localhost:8000/)
--   Jika sudah menjalankan seed untuk testing ada beberapa user yang telah di generate salah satunya (email : test@example.com, password : password)
 
+## Penjelasan singkat
+- Tidak terdapat fitur login karena aplikasi ini untuk sistem admin
+- Jika sudah melakukan seeding dan migration terdapat 2 user yaitu (Manager, Employee)
+- Manager (email : manager@example.com, pass : password) (Dapat memanipulasi data frozen food)
+- Employee (email : employee@example.com, pass : password) (Dapat memanipulasi data transaction menggunakan data frozen food yang telah dibuat manager)
