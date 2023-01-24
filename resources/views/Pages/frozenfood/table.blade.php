@@ -28,7 +28,17 @@
                                             <option value="description">Description</option>
                                         </select>
                                     </div>
-                                    <div class="float-right">
+                                    <div class="float-right d-flex">
+                                        <div class="btn-group sort-btn mr-4">
+                                            <button class="btn btn-primary" type="button" data-toggle="dropdown"
+                                                aria-haspopup="true" aria-expanded="false">Sort</button>
+                                            <button class="btn btn-primary dropdown-toggle" data-sort="none"><i
+                                                    class="fa fa-sort"></i></button>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#" tabindex="-1" data-type="alpha">Name</a></li>
+                                                <li><a href="#" tabindex="-1" data-type="numeric">Date</a></li>
+                                            </ul>
+                                        </div>
                                         <div class="input-group">
                                             <input id="input-keyword" type="text" class="form-control"
                                                 placeholder="Search" name="keyword">

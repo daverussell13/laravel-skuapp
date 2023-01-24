@@ -15,20 +15,22 @@
                 </a>
             </li>
             <li class="menu-header">Menu</li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-file-alt"></i>
-                    <span>Transactions</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class="{{ request()->is('transaction/create') ? 'active' : '' }}">
-                        <a href="/transaction/create">Add</a>
-                    </li>
-                    <li class="{{ request()->is('transaction/table') ? 'active' : '' }}">
-                        <a href="/transaction/table">Table</a>
-                    </li>
-                </ul>
-            </li>
+            @if (auth()->user()->role_id == 2)
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Transactions</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ request()->is('transaction/create') ? 'active' : '' }}">
+                            <a href="/transaction/create">Add</a>
+                        </li>
+                        <li class="{{ request()->is('transaction/table') ? 'active' : '' }}">
+                            <a href="/transaction/table">Table</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
             @if (auth()->user()->role_id == 1)
                 <li class="nav-item dropdown">
                     <a href="#" class="nav-link has-dropdown">
