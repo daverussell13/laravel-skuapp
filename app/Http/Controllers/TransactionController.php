@@ -30,4 +30,9 @@ class TransactionController extends Controller
             abort(404);
         }
     }
+
+    public function createForm()
+    {
+        return view("pages.transaction.add");
+    }
 }

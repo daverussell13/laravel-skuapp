@@ -86,7 +86,6 @@ class TransactionRepository
             SELECT
                 td.quantity as quantity,
                 f.name as food_name,
-                f.weight as food_weight,
                 td.price as food_price
             FROM transaction_details td
             INNER JOIN foods f ON td.food_id = f.id AND td.transaction_id = ?
@@ -101,7 +100,6 @@ class TransactionRepository
                 $transactionDetails[] = new TransactionDetails(
                     $result["quantity"],
                     $result["food_name"],
-                    $result["food_weight"],
                     $result["food_price"]
                 );
             }
@@ -109,5 +107,48 @@ class TransactionRepository
             $statement->closeCursor();
         }
         return $transactionDetails;
+    }
+
+    public function insert(int $total_price)
+    {
+        $query = <<<SQL
+            INSERT INTO transactions (user_id, total_price)
+            values (?, ?)
+        SQL;
+
+        try {
+            $statement = $this->connection->prepare($query);
+            $status = $statement->execute([
+                auth()->user()->getAuthIdentifier(),
+                $total_price
+            ]);
+        } finally {
+            $statement->closeCursor();
+        }
+
+        if ($status) return $this->connection->lastInsertId();
+        return null;
+    }
+
+    public function insertDetails(int $transactionId, array $item)
+    {
+        $query = <<<SQL
+            INSERT INTO transaction_details (quantity, transaction_id, food_id, price)
+            values (?, ?, ?, ?)
+        SQL;
+
+        try {
+            $statement = $this->connection->prepare($query);
+            $status = $statement->execute([
+                $item["food_qty"],
+                $transactionId,
+                $item["food_id"],
+                $item["food_price"],
+            ]);
+        } finally {
+            $statement->closeCursor();
+        }
+
+        return $status;
     }
 }

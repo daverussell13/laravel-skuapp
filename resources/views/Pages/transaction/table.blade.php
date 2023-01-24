@@ -15,7 +15,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <form action="/food/search" method="POST">
+                                <form action="/transaction/search" method="POST">
                                     @csrf
                                     <div class="float-left">
                                         <select class="form-control selectric" name="colname">

@@ -4,7 +4,7 @@ namespace App\Modules\Transaction;
 
 use App\Modules\Transaction\TransactionRepository;
 use App\Modules\Common\Helpers;
-use Yajra\DataTables\Exceptions\Exception;
+use Illuminate\Support\Facades\DB;
 
 class TransactionService
 {
@@ -26,12 +26,29 @@ class TransactionService
     {
         $transaction = $this->repository->getById($id);
         if (!$transaction)
-            throw new Exception("Transaction not found");
+            throw new \Exception("Transaction not found");
         return $transaction;
     }
 
     public function getRelatedTransactionDetails($transactionId)
     {
         return $this->repository->getDetailsById($transactionId);
+    }
+
+    public function addNewTransaction($items, $total_price)
+    {
+        DB::beginTransaction();
+        try {
+            $id = $this->repository->insert($total_price);
+            if (!$id) throw new \Exception("Failed to create new transaction");
+            foreach ($items as $item) {
+                $status = $this->repository->insertDetails($id, $item);
+                if (!$status) throw new \Exception("Failed to create new transaction");
+            }
+            DB::commit();
+        } catch (\Exception $exception) {
+            DB::rollBack();
+            throw $exception;
+        }
     }
 }

@@ -4,7 +4,6 @@ use App\Http\Controllers\AppController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\FrozenFoodController;
 use App\Http\Controllers\TransactionController;
-use App\Modules\FrozenFood\FrozenFoodService;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,6 +30,8 @@ Route::group(
         Route::put("/food/update/{id}", [FrozenFoodController::class, "update"]);
         Route::delete("/food/{id}", [FrozenFoodController::class, "delete"]);
         Route::get("/transaction/table", [TransactionController::class, "table"]);
+        Route::get("/transaction/create", [TransactionController::class, "createForm"]);
+        Route::post("/transaction/create", [TransactionController::class, "create"]);
         Route::get("/transaction/detail/{id}", [TransactionController::class, "detail"]);
     }
 );
