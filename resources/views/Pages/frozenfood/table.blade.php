@@ -53,10 +53,10 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @php $i = 1 @endphp
+                                            @php $i = 0 @endphp
                                             @foreach ($foods as $food)
                                                 <tr>
-                                                    <td class="text-center">{{ $i++ }}</td>
+                                                    <td class="text-center">{{ $foods->firstItem() + $i++ }}</td>
                                                     <td>{{ $food->name }}</td>
                                                     <td class="text-center">{{ $food->weight }}</td>
                                                     <td class="text-center" style="white-space: nowrap;">

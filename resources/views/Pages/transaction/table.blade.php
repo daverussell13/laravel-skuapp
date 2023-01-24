@@ -19,8 +19,8 @@
                                     @csrf
                                     <div class="float-left">
                                         <select class="form-control selectric" name="colname">
-                                            <option value="date">Date</option>
-                                            <option value="date">Admin Name</option>
+                                            <option value="admin_name">Admin Name</option>
+                                            <option value="admin_email">Total Price</option>
                                         </select>
                                     </div>
                                     <div class="float-right">
@@ -42,20 +42,23 @@
                                                 <th class="text-center">No</th>
                                                 <th class="text-center">Transaction Time</th>
                                                 <th class="text-center">Admin Name</th>
-                                                <th class="text-center">Admin Email</th>
+                                                <th class="text-center">Total Price</th>
                                                 <th class="text-center">Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @php $i = 1 @endphp
+                                            @php $i = 0 @endphp
                                             @foreach ($transactions as $transaction)
                                                 <tr>
-                                                    <td class="text-center">{{ $i++ }}</td>
-                                                    <td class="text-center">{{ $transaction['date'] }}</td>
-                                                    <td class="text-center">{{ $transaction['user_name'] }}</td>
-                                                    <td class="text-center">{{ $transaction['user_email'] }}</td>
+                                                    <td class="text-center">{{ $transactions->firstItem() + $i++ }}</td>
+                                                    <td class="text-center">{{ $transaction->time }}</td>
+                                                    <td class="text-center">{{ $transaction->user_name }}</td>
+                                                    <td class="text-center" style="white-space: nowrap;">
+                                                        Rp. {{ number_format($transaction->total_price, 2, ',', '.') }}
+                                                    </td>
                                                     <td class="text-center">
-                                                        <a href="#" class="btn btn-primary">View Details</a>
+                                                        <a href="/transaction/detail/{{ $transaction->id }}"
+                                                            class="btn btn-primary">View Details</a>
                                                     </td>
                                                 </tr>
                                             @endforeach

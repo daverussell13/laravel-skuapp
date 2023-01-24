@@ -31,6 +31,7 @@ Route::group(
         Route::put("/food/update/{id}", [FrozenFoodController::class, "update"]);
         Route::delete("/food/{id}", [FrozenFoodController::class, "delete"]);
         Route::get("/transaction/table", [TransactionController::class, "table"]);
+        Route::get("/transaction/detail/{id}", [TransactionController::class, "detail"]);
     }
 );
 

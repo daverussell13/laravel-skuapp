@@ -19,4 +19,14 @@ class TransactionController extends Controller
         $transactions->setPath("/transaction/table");
         return view("pages.transaction.table", compact("transactions"));
     }
+
+    public function detail($id)
+    {
+        try {
+            $transaction = $this->service->getSingleTransaction($id);
+            $transactionDetails = $this->service->getRelatedTransactionDetails($id);
+        } catch (\Exception $err) {
+            abort(404);
+        }
+    }
 }

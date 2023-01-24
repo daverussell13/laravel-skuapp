@@ -16,9 +16,13 @@ class TransactionFactory extends Factory
      */
     public function definition()
     {
+        $datetime = fake()->dateTime();
+
         return [
             'user_id' => fake()->numberBetween(1, 10),
-            "created_at" => fake()->dateTime(),
+            'total_price' => fake()->numberBetween(10000, 100000),
+            'created_at' => $datetime,
+            'updated_at' => $datetime,
         ];
     }
 }
