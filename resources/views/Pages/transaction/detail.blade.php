@@ -9,7 +9,6 @@
                     <div class="breadcrumb-item active"><a href="#" onclick="goBackHdl()">Go Back</a></div>
                 </div>
             </div>
-
             <div class="section-body">
                 <div class="invoice">
                     <div class="invoice-print">
@@ -55,10 +54,13 @@
                                                 <td>{{ $i++ }}</td>
                                                 <td>{{ $detail->food_name }}</td>
                                                 <td class="text-center">
-                                                    {{ $detail->food_price }}
+                                                    Rp. {{ number_format($detail->food_price, 2, ',', '.') }}
                                                 </td>
                                                 <td class="text-center">{{ $detail->quantity }}</td>
-                                                <td class="text-right">{{ $detail->quantity * $detail->food_price }}</td>
+                                                <td class="text-right">
+                                                    Rp.
+                                                    {{ number_format($detail->quantity * $detail->food_price, 2, ',', '.') }}
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </table>
@@ -70,7 +72,7 @@
                                         <div class="invoice-detail-item">
                                             <div class="invoice-detail-name">Total</div>
                                             <div class="invoice-detail-value invoice-detail-value-lg">
-                                                {{ $transaction->total_price }}
+                                                Rp. {{ number_format($transaction->total_price, 2, ',', '.') }}
                                             </div>
                                         </div>
                                     </div>

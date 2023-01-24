@@ -17,7 +17,8 @@
                             <tr>
                                 <td class="align-middle">{{ $item['food_name'] }}</td>
                                 <td class="text-center align-middle" style="white-space: nowrap;">
-                                    {{ $item['food_price'] }}</td>
+                                    {{ number_format($item['food_price'], 0, ',', '.') }}
+                                </td>
                                 <td class="d-flex justify-content-center">
                                     <input wire:model="items.{{ $index }}.food_qty" type="number"
                                         class="form-control" style="max-width: 80px" min="1"
@@ -70,7 +71,9 @@
                             <tr>
                                 <td class="text-center">{{ $foods->firstItem() + $key }}</td>
                                 <td class="text-center">{{ $food->name }}</td>
-                                <td class="text-center">{{ $food->price }}</td>
+                                <td class="text-center">
+                                    {{ number_format($food->price, 0, ',', '.') }}
+                                </td>
                                 <td class="text-center">{{ $food->stock }}</td>
                                 <td class="text-center">
                                     <button href="#" class="btn btn-success"

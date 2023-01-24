@@ -20,7 +20,6 @@ return new class extends Migration
             $table->integer("price");
             $table->foreign("food_id")->references("id")->on("foods");
             $table->foreign("transaction_id")->references("id")->on("transactions");
-            $table->timestamps();
         });
     }
 

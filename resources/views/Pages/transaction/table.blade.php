@@ -51,7 +51,9 @@
                                             @foreach ($transactions as $transaction)
                                                 <tr>
                                                     <td class="text-center">{{ $transactions->firstItem() + $i++ }}</td>
-                                                    <td class="text-center">{{ $transaction->time }}</td>
+                                                    <td class="text-center">
+                                                        {{ date('d M Y, H:i', strtotime($transaction->time)) }}
+                                                    </td>
                                                     <td class="text-center">{{ $transaction->user_name }}</td>
                                                     <td class="text-center" style="white-space: nowrap;">
                                                         Rp. {{ number_format($transaction->total_price, 2, ',', '.') }}

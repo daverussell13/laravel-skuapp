@@ -20,7 +20,8 @@ return new class extends Migration
             $table->binary('password');
             $table->string("phone_number", 20)->unique();
             $table->string("address", 64);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
         });
     }

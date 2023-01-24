@@ -22,7 +22,8 @@ return new class extends Migration
             $table->integer('stock')->unsigned();
             $table->date('expiration_date');
             $table->string('description', 512);
-            $table->timestamps();
+            $table->timestamp('created_at')->useCurrent();
+            $table->timestamp('updated_at')->useCurrent();
             $table->softDeletes();
             $table->foreign('user_id')->references('id')->on('users');
         });
