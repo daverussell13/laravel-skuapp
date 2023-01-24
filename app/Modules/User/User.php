@@ -5,6 +5,7 @@ namespace App\Modules\User;
 class User
 {
     public $id;
+    public $role_id;
     public $name;
     public $email;
     public $password;

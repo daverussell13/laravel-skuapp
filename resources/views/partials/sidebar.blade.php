@@ -29,16 +29,20 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link has-dropdown">
-                    <i class="fas fa-utensils"></i>
-                    <span>Frozen Food</span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class="{{ request()->is('food/create') ? 'active' : '' }}"><a href="/food/create">Add</a></li>
-                    <li class="{{ request()->is('food/table') ? 'active' : '' }}"><a href="/food/table">Table</a></li>
-                </ul>
-            </li>
+            @if (auth()->user()->role_id == 1)
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link has-dropdown">
+                        <i class="fas fa-utensils"></i>
+                        <span>Frozen Food</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="{{ request()->is('food/create') ? 'active' : '' }}"><a href="/food/create">Add</a>
+                        </li>
+                        <li class="{{ request()->is('food/table') ? 'active' : '' }}"><a href="/food/table">Table</a>
+                        </li>
+                    </ul>
+                </li>
+            @endif
         </ul>
     </aside>
 </div>

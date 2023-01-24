@@ -11,6 +11,7 @@ class UserRepository
 
     private $selectColumns = [
         "users.id",
+        "users.role_id",
         "users.name",
         "users.email",
         "users.password",
